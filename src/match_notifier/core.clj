@@ -22,6 +22,15 @@
               (h/not h/first-child))
             body))
 
+(defn get-running-events
+  [body]
+  (h/select (h/child
+              (h/id :tabelle)
+              (h/nth-child 1)
+              (h/tag :tbody)
+              (h/not h/first-child))
+            body))
+
 (defn line-break? [element]
   (and
     (string? element)
@@ -33,13 +42,18 @@
     (remove line-break? element)
     element))
 
-(defn get-all-events-without-line-breaks
+(defn get-upcoming-events-without-line-breaks
   [file]
   (w/prewalk
     remove-linebreaks-from-lists
     (get-upcoming-events (parse-all-events file))))
 
+(defn get-running-events-without-line-breaks
+  [file]
+  (w/prewalk
+    remove-linebreaks-from-lists
+    (get-running-events (parse-all-events file))))
 
 (defn -main
   [& args]
-  (println (get-all-events-without-line-breaks path)))
+  (println (get-upcoming-events-without-line-breaks path)))
