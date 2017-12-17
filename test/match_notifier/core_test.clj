@@ -9,5 +9,15 @@
 
 (deftest overview-parsing
   (testing "detects running tournaments"
-    (is (= (running-tournaments? overview-path) true))
-    (is (= (running-tournaments? overview-without-running-tournaments-path) false))))
+    (is (=
+          (running-tournaments? overview-path)
+          true)))
+  (testing "detects no running tournaments"
+    (is (=
+          (running-tournaments? overview-without-running-tournaments-path)
+          false)))
+  (testing "finds a running tournament"
+    (is (=
+          (get-running-tournaments overview-path)
+          [{:name "Dienstags-Doppel - Mini-Challenger"
+            :link "http://www.tifu.info/turnier?turnierid=28194&ver=1"}]))))

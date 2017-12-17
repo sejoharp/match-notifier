@@ -84,12 +84,38 @@
     (h/tag :tr)
     (h/tag :th)))
 
-(def create-filter-table-name-function
+(def filter-table-name-function
   (comp #(= "laufende Turniere" %) first :content first))
 
 (defn running-tournaments?
   [path]
-  (create-filter-table-name-function
+  (filter-table-name-function
     (h/select
       running-tournament-selector
       (parse-all-events path))))
+
+(defn get-running-tournament-snippets
+  [path]
+  (h/select
+    (h/child
+      (h/id :c1)
+      (h/nth-child 2)
+      (h/tag :tbody)
+      (h/tag :tr)
+      (h/tag :td)
+      (h/tag :span)
+      (h/tag :a))
+    (parse-all-events path)))
+
+(def link-filter (comp #(str "http://www.tifu.info/" %) :href :attrs))
+
+(def name-filter (comp first :content))
+
+(defn to-tournament
+  [snippet]
+  {:name (name-filter snippet)
+   :link (link-filter snippet)})
+
+(defn get-running-tournaments
+  [path]
+  (map to-tournament (get-running-tournament-snippets path)))
