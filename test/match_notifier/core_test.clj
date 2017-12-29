@@ -18,6 +18,6 @@
           false)))
   (testing "finds a running tournament"
     (is (=
-          (get-running-tournaments overview-path)
+          (running-tournaments overview-path)
           [{:name "Dienstags-Doppel - Mini-Challenger"
             :link "http://www.tifu.info/turnier?turnierid=28194&ver=1"}]))))

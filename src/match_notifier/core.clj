@@ -9,7 +9,7 @@
 
 (def path "test/resources/overview.html")
 
-(defn parse-all-events
+(defn all-events
   [file]
   (as-hickory (parse (slurp file))))
 
@@ -37,20 +37,20 @@
 
 (defn get-upcoming-events-from-file
   [file]
-  (get-upcoming-events (parse-all-events file)))
+  (get-upcoming-events (all-events file)))
 
 (defn get-running-events-from-file
   [file]
-  (get-running-events (parse-all-events file)))
+  (get-running-events (all-events file)))
 
-(defn project-tournament-data
+(defn project-tournament
   [snippet]
   {:link (first (:content snippet))
    :name (get-in snippet [:attrs :href])})
 
 (defn -main
   [& args]
-  (println (map project-tournament-data
+  (println (map project-tournament
                 (get-running-events-from-file path))))
 
 (defn line-break? [element]
@@ -69,13 +69,13 @@
   [file]
   (w/prewalk
     remove-linebreaks-from-lists
-    (get-upcoming-events (parse-all-events file))))
+    (get-upcoming-events (all-events file))))
 
 (defn get-running-events-without-line-breaks
   [file]
   (w/prewalk
     remove-linebreaks-from-lists
-    (parse-all-events file)))
+    (all-events file)))
 
 (def running-tournament-selector
   (h/child
@@ -84,18 +84,12 @@
     (h/tag :tr)
     (h/tag :th)))
 
-(def filter-table-name-function
+(def running-tournaments-filter
   (comp #(= "laufende Turniere" %) first :content first))
 
-(defn running-tournaments?
-  [path]
-  (filter-table-name-function
-    (h/select
-      running-tournament-selector
-      (parse-all-events path))))
 
-(defn get-running-tournament-snippets
-  [path]
+(defn running-tournament-snippets
+  [html]
   (h/select
     (h/child
       (h/id :c1)
@@ -105,17 +99,27 @@
       (h/tag :td)
       (h/tag :span)
       (h/tag :a))
-    (parse-all-events path)))
+    html))
 
-(def link-filter (comp #(str "http://www.tifu.info/" %) :href :attrs))
+(def link (comp #(str "http://www.tifu.info/" %) :href :attrs))
 
-(def name-filter (comp first :content))
+(def name (comp first :content))
 
 (defn to-tournament
   [snippet]
-  {:name (name-filter snippet)
-   :link (link-filter snippet)})
+  {:name (name snippet)
+   :link (link snippet)})
 
-(defn get-running-tournaments
+(defn running-tournaments?
   [path]
-  (map to-tournament (get-running-tournament-snippets path)))
+  (->> path
+       all-events
+       (h/select running-tournament-selector)
+       running-tournaments-filter))
+
+(defn running-tournaments
+  [path]
+  (->> path
+       all-events
+       running-tournament-snippets
+       (map to-tournament)))
