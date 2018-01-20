@@ -9,83 +9,24 @@
 
 (def path "test/resources/overview.html")
 
-(defn all-events
+(defn hickory-snippets
   [file]
   (as-hickory (parse (slurp file))))
-
-(defn get-upcoming-events
-  [body]
-  (h/select (h/child
-              (h/id :tabelle)
-              (h/nth-child 2)
-              (h/tag :tbody)
-              (h/not h/first-child)
-              (h/nth-child 2)
-              (h/tag :a))
-            body))
-
-(defn get-running-events
-  [body]
-  (h/select (h/child
-              (h/id :tabelle)
-              (h/nth-child 1)
-              (h/tag :tbody)
-              (h/not h/first-child)
-              (h/nth-child 2)
-              (h/tag :a))
-            body))
-
-(defn get-upcoming-events-from-file
-  [file]
-  (get-upcoming-events (all-events file)))
-
-(defn get-running-events-from-file
-  [file]
-  (get-running-events (all-events file)))
 
 (defn project-tournament
   [snippet]
   {:link (first (:content snippet))
    :name (get-in snippet [:attrs :href])})
 
-(defn -main
-  [& args]
-  (println (map project-tournament
-                (get-running-events-from-file path))))
+(defn element-count
+  [elements]
+  (= 1 (count elements)))
 
-(defn line-break? [element]
-  (and
-    (string? element)
-    (s/blank? (s/trim element))))
-
-(defn remove-linebreaks-from-lists
-  [element]
-  (println element)
-  (if (vector? element)
-    (remove line-break? element)
-    element))
-
-(defn get-upcoming-events-without-line-breaks
-  [file]
-  (w/prewalk
-    remove-linebreaks-from-lists
-    (get-upcoming-events (all-events file))))
-
-(defn get-running-events-without-line-breaks
-  [file]
-  (w/prewalk
-    remove-linebreaks-from-lists
-    (all-events file)))
-
-(def running-tournament-selector
-  (h/child
-    (h/tag :table)
-    (h/tag :thead)
-    (h/tag :tr)
-    (h/tag :th)))
-
-(def running-tournaments-filter
-  (comp #(= "laufende Turniere" %) first :content first))
+(defn running-tournament-element
+  [events]
+  (h/select
+    (h/find-in-text #"laufende Turniere")
+    events))
 
 
 (defn running-tournament-snippets
@@ -113,13 +54,25 @@
 (defn running-tournaments?
   [path]
   (->> path
-       all-events
-       (h/select running-tournament-selector)
-       running-tournaments-filter))
+       hickory-snippets
+       running-tournament-element
+       element-count))
+
+(defn tournaments
+  [path]
+  (->> path
+       hickory-snippets
+       running-tournament-snippets
+       (map to-tournament)))
+
 
 (defn running-tournaments
   [path]
-  (->> path
-       all-events
-       running-tournament-snippets
-       (map to-tournament)))
+  (if (running-tournaments? path)
+    (tournaments path)
+    []))
+
+(defn -main
+  [& args]
+  (println (map project-tournament
+                (running-tournaments path))))
