@@ -1,127 +1,391 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<!DOCTYPE html>
+<html lang="de">
 <head>
-    <meta name="robots" content="noindex">
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-    <meta http-equiv="refresh" content="30; url="/turnier.php" />
-    <title>TiFu Turniersoftware Liveergebnisse</title>
 
-    <link href="tifu.css" rel="stylesheet" type="text/css" media="screen" />
+    <meta charset="utf-8">
+    <!--
+        This website is powered by TYPO3 - inspiring people to share!
+        TYPO3 is a free open source Content Management Framework initially created by Kasper Skaarhoj and licensed under GNU/GPL.
+        TYPO3 is copyright 1998-2017 of Kasper Skaarhoj. Extensions are copyright of their respective owners.
+        Information and contribution at https://typo3.org/
+    -->
+
+    <base href="http://www.tifu.info/">
+
+    <title>Turnier</title>
+    <meta name="generator" content="TYPO3 CMS">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, shrink-to-fit=yes">
+    <meta http-equiv="refresh" content="30; url=">
+
+
+    <link rel="stylesheet" type="text/css" href="/typo3temp/assets/css/9933758952.css?1506505012" media="all">
+    <link rel="stylesheet" type="text/css"
+          href="/typo3conf/ext/tifu_distribution/Resources/Public/Bootstrap/css/bootstrap.min.css?1506814277"
+          media="all">
+    <link rel="stylesheet" type="text/css"
+          href="/typo3conf/ext/tifu_distribution/Resources/Public/Bootstrap/css/bootstrap.css?1506814275" media="all">
+    <link rel="stylesheet" type="text/css"
+          href="/typo3conf/ext/tifu_distribution/Resources/Public/Css/custom.css?1507482885" media="all">
+    <link rel="stylesheet" type="text/css"
+          href="/typo3conf/ext/tifu_distribution/Resources/Public/Bootstrap/css/sticky_footer.css?1507206025"
+          media="all">
+    <link rel="stylesheet" type="text/css"
+          href="/typo3conf/ext/bootstrap_grids/Resources/Public/Flexslider2/flexslider.css?1506300366" media="all">
+    <link rel="stylesheet" type="text/css" href="/typo3conf/ext/femanager/Resources/Public/Css/Main.min.css?1506636049"
+          media="all">
+    <link rel="stylesheet" type="text/css"
+          href="/typo3conf/ext/femanager/Resources/Public/Css/Additional.min.css?1506636049" media="all">
+
 
 </head>
-<body bgcolor="black">
-<div id="wrapper">
-    <div id="kopfbereich">
-        <h1><a href="index.php">TiFU Turniersoftware</a></h1>
+<body>
 
-        <h2>Challenger München  München</h2>
 
-    </div> <!-- Ende Kopfbereich -->
-    <div id="tabelle">
-        <table class="feste_breite" border="0">
-            <caption>laufende Spiele</caption>
-            <colgroup>
-                <col width="70">
-                <col width="70">
-                <col width="60">
-                <col width="50%">
-                <col width="20">
-                <col width="50%">
-                <col width="80">
-            </colgroup>
-            <tr>
-                <th>Tischnr.</th>
-                <th>Disziplin</th>
-                <th>Runde</th>
-                <th>Team 1</th>
-                <th> </th>
-                <th>Team 2</th>
-                <th>Startzeit</th>
-            </tr>
-            <tr class="odd">
-                <td>1</td>
-                <td>OD Profi</td>
-                <td>LBR17</td>
-                <td>Sören Raabe / Massoud Maysami</td>
-                <td>vs</td>
-                <td>Till Beck / Florian Grafweg</td>
-                <td>18:21 Uhr</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>OD Profi</td>
-                <td>WBR 9</td>
-                <td>Thomas Artinger / Georg Sedlmeier</td>
-                <td>vs</td>
-                <td>Phi Nguyen-Thien / Thomas Bonfert</td>
-                <td>18:11 Uhr</td>
-            </tr>
-            <tr class="odd">
-                <td>3</td>
-                <td>OD Profi</td>
-                <td>WBR17</td>
-                <td>Christian Müller / Wilhelm Wiedmeier</td>
-                <td>vs</td>
-                <td>Paul Zehetmair / Daniel Dax</td>
-                <td>17:51 Uhr</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>OD Profi</td>
-                <td>LBR13</td>
-                <td>Miro Fulat / Thomas Spahmann</td>
-                <td>vs</td>
-                <td>unbekannt</td>
-                <td>18:11 Uhr</td>
-            </tr>
-        </table>
-        <table class="feste_breite" border="0">
-            <caption>ausstehende Spiele</caption>
-            <colgroup>
-                <col width="70">
-                <col width="60">
-                <col width="50%">
-                <col width="20">
-                <col width="50%">
-            </colgroup>
-            <tr>
-                <th>Disziplin</th>
-                <th>Runde</th>
-                <th>Team 1</th>
-                <th> </th>
-                <th>Team 2</th>
-            </tr>
-            <tr class="odd">
-                <td>OD Profi</td>
-                <td>WBR 9</td>
-                <td>Dominik Streibl / Soufiane Aboussibaa</td>
-                <td>vs</td>
-                <td>Phillip Pauli / Denis Geb</td>
-            </tr>
-        </table>
-        </table>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <div class="navbar-header"><a href="http://www.tifu.info/" class="navbar-brand">TiFu Turniersoftware</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar"><span class="navbar-toggler-icon"></span></button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="nav-item dropdown"><a href="beendeteturniere/?no_cache=1" title="beendete Turniere"
+                                                 class="dropdown-toggle nav-link" data-toggle="dropdown" role="button"
+                                                 aria-expanded="false">beendete Turniere</a>
+                    <div class="dropdown-menu" aria-labelledby="dLable"><a href="turniere2017/?no_cache=1"
+                                                                           title="Turniere 2017" class="dropdown-item">Turniere
+                        2017</a><a href="turniere2016/?no_cache=1" title="Turniere 2016" class="dropdown-item">Turniere
+                        2016</a><a href="turniere2015/?no_cache=1" title="Turniere 2015" class="dropdown-item">Turniere
+                        2015</a></div>
+                </li>
+                <li class="nav-item"><a href="locations/?no_cache=1" title="Locations" class="nav-link">Locations</a>
+                </li>
+                <li class="nav-item"><a href="faq/?no_cache=1" title="FAQ" class="nav-link">FAQ</a></li>
+            </ul>
+        </div>
+        <a class="btn btn-outline-secondary my-2 my-sm-0" href="http://www.tifu.info/login" role="button">Anmelden</a>
+    </div>
+</nav>
 
-        <table class="feste_breite" border="0">
-            <caption>Disziplinen</caption>
-            <colgroup>
-                <col width="50%">
-                <col width="50%">
-                <col width="200">
-            </colgroup>
-            <tr>
-                <th>Disziplin</th>
-                <th>System</th>
-                <th>Status</th>
-            </tr>
 
-            <tr class="odd">
-                <td class="textlinks"><a href=disziplin_tabelle.php?turnierid=27704&disziplinid=0&ver=1>Offenes Doppel</a></td>
-                <td>ProfiKO</td>
-                <td>Endrunde läuft...</td>
-            </tr>
-        </table>
-    </div> <!-- Ende tabelle -->
-</div> <!-- Ende wrapper -->
+<div class="container">
+
+    <div class="row">
+        <div class="angemeldet text-right col-12 col-lg-12">
+
+
+            <span></span>
+
+
+        </div>
+
+        <div class="tabelle col-12 col-lg-9">
+
+            <div id="c4" class="frame frame-default frame-type-list frame-layout-0">
+
+
+                <div id="kopfbereich">
+                    <h2><p>Deutsche Meisterschaft 2017</p></h2>
+                    <h2><p>Medebach</p></h2>
+                </div> <!-- Ende Kopfbereich -->
+                <table class="table table-responsive table-sm table-striped table-inverse table-bordered"
+                       style="max-width: 1000px;">
+                    <thead>
+                    <tr>
+                        <th class="text-center" colspan="7">laufende Spiele</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center" width="70" style="min-width: 70px;">Tischnr.</th>
+                        <th class="text-center" width="80" style="min-width: 80px;">Disziplin</th>
+                        <th class="text-center" width="60" style="min-width: 60px;">Runde</th>
+                        <th class="text-center" width="50%">Team 1</th>
+                        <th class="text-center" width="20" style="min-width: 20px;"></th>
+                        <th class="text-center" width="50%">Team 2</th>
+                        <th class="text-center" width="90" style="min-width: 90px;">Startzeit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center align-middle">1</td>
+                        <td class="text-center align-middle">MD Profi</td>
+                        <td class="text-center align-middle">1/8</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16414
+                                                                                           class="plainlink">Mia&nbspReimer
+                            / Arne&nbspBorck</a></td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16434
+                                                                                           class="plainlink">Michael&nbspStrauÃŸ
+                            / Petra&nbspAndres</a></td>
+                        <td class="text-center align-middle">20:15 Uhr</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">2</td>
+                        <td class="text-center align-middle">MD Profi</td>
+                        <td class="text-center align-middle">1/8</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16388
+                                                                                           class="plainlink">Thomas&nbspKroll
+                            / Stefanie&nbspSchmid</a></td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16376
+                                                                                           class="plainlink">Robin&nbspHanke
+                            / Maiju&nbspPihlajasaari</a></td>
+                        <td class="text-center align-middle">20:10 Uhr</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">3</td>
+                        <td class="text-center align-middle">MD Profi</td>
+                        <td class="text-center align-middle">1/8</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16371
+                                                                                           class="plainlink">Niclas&nbspGrote
+                            / Mona&nbspBrandt</a></td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16366
+                                                                                           class="plainlink">Henning&nbspFrommeyer
+                            / Silke&nbspBoos</a></td>
+                        <td class="text-center align-middle">20:12 Uhr</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">4</td>
+                        <td class="text-center align-middle">MD Profi</td>
+                        <td class="text-center align-middle">1/8</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16390
+                                                                                           class="plainlink">BjÃ¶rn&nbspKrutzki
+                            / Sandra&nbspRanff</a></td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16399
+                                                                                           class="plainlink">Marius&nbspMeyer-Hemme
+                            / Katharina&nbspVierk</a></td>
+                        <td class="text-center align-middle">19:46 Uhr</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">5</td>
+                        <td class="text-center align-middle">MD Profi</td>
+                        <td class="text-center align-middle">1/8</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16419
+                                                                                           class="plainlink">Nathalie&nbspSaltz
+                            / Minyoung&nbspBai</a></td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16428
+                                                                                           class="plainlink">Marlin&nbspSielfeld
+                            / Lena&nbspSchmidbauer</a></td>
+                        <td class="text-center align-middle">19:47 Uhr</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">7</td>
+                        <td class="text-center align-middle">HD Amat.</td>
+                        <td class="text-center align-middle">Platz 3</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16094
+                                                                                           class="plainlink">Rafael&nbspMortensen&nbspErnits
+                            / Florian&nbspBaitis</a></td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16062
+                                                                                           class="plainlink">Florian&nbspMaqua
+                            / Moritz&nbspSchneider</a></td>
+                        <td class="text-center align-middle">20:12 Uhr</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">8</td>
+                        <td class="text-center align-middle">HD Profi</td>
+                        <td class="text-center align-middle">1/4</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=15957
+                                                                                           class="plainlink">Oke&nbspHarms
+                            /
+                            Niklaas&nbspWestermann</a></td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=15955
+                                                                                           class="plainlink">Yannik&nbspHansen
+                            / Longlong&nbspKrutwig</a></td>
+                        <td class="text-center align-middle">19:30 Uhr</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">13</td>
+                        <td class="text-center align-middle">DD Amat.</td>
+                        <td class="text-center align-middle">Finale</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16091
+                                                                                           class="plainlink">Kathrin&nbspTanja&nbspMichaelis
+                            / Antje&nbspRoth</a></td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle" style="word-wrap: normal;"><a href=teaminfo?tid=16331
+                                                                                           class="plainlink">Katharina&nbspWunderlich
+                            / Imke&nbspQueitsch</a></td>
+                        <td class="text-center align-middle">20:09 Uhr</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-responsive table-sm table-striped table-inverse table-bordered"
+                       style="max-width: 1000px;">
+                    <thead>
+                    <tr>
+                        <th class="text-center" colspan="5">ausstehende Spiele</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center" width="80" style="min-width: 80px;">Disziplin</th>
+                        <th class="text-center" width="60" style="min-width: 60px;">Runde</th>
+                        <th class="text-center" width="50%">Team 1</th>
+                        <th class="text-center" width="20" style="min-width: 20px;"></th>
+                        <th class="text-center" width="50%">Team 2</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center align-middle">DD Profi</td>
+                        <td class="text-center align-middle">Finale</td>
+                        <td class="text-center align-middle">Stefanie&nbspSchmid / Silke&nbspBoos</td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle">Maura&nbspPorrmann / Sandra&nbspRanff</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">DD Profi</td>
+                        <td class="text-center align-middle">Platz 3</td>
+                        <td class="text-center align-middle">Liuba&nbspSydorchuk / Alina&nbspSchadwinkel</td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle">Nathalie&nbspSaltz / My&nbspLinh&nbspTran</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">DD Amat.</td>
+                        <td class="text-center align-middle">Platz 3</td>
+                        <td class="text-center align-middle">Sandra&nbspBernhardt / Lena&nbspSchmidbauer</td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle">Alice&nbspMeier / Julia&nbspVoecks</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">HD Profi</td>
+                        <td class="text-center align-middle">1/2</td>
+                        <td class="text-center align-middle">Felix&nbspDroese / Alexander&nbspDi&nbspBello</td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle">Ruben&nbspHeinrich / Daniel&nbspSorger</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">HD Amat.</td>
+                        <td class="text-center align-middle">Finale</td>
+                        <td class="text-center align-middle">Tommy&nbspPfeiffer / Mark&nbspHelfrich</td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle">Nils&nbspMeyer / Henning&nbspFrommeyer</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">MD Profi</td>
+                        <td class="text-center align-middle">1/16</td>
+                        <td class="text-center align-middle">Marlen&nbspWeise / Oke&nbspHarms</td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle">Maria&nbspPader / Semin&nbspMensah</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-middle">MD Profi</td>
+                        <td class="text-center align-middle">1/8</td>
+                        <td class="text-center align-middle">Sarah&nbspRiebschlÃ¤ger / Martin&nbspRudorfer</td>
+                        <td class="text-center align-middle">vs</td>
+                        <td class="text-center align-middle">Pascal&nbspOlbrich / Antje&nbspRoth</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-responsive table-sm table-striped table-inverse table-bordered"
+                       style="max-width: 1000px;">
+                    <thead>
+                    <tr>
+                        <th class="text-center" colspan="3">Disziplinen</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center" width="50%" style="min-width: 350px;">Disziplin</th>
+                        <th class="text-center" width="50%" style="min-width: 350px;">System</th>
+                        <th class="text-center" style="min-width: 200px;">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-left"><a href=disziplintab?turnierid=168&disziplinid=2&ver=2>Herren Doppel</a>
+                        </td>
+                        <td class="text-center">ProfiKO, AmateurKO</td>
+                        <td class="text-center">Endrunde lÃ¤uft...</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><a href=turnieranmeldungen?turnierid=168&disziplinid=3&ver=2>Herren
+                            Einzel</a>
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center">geplant</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><a href=disziplintab?turnierid=168&disziplinid=4&ver=2>Damen Doppel</a>
+                        </td>
+                        <td class="text-center">ProfiKO, AmateurKO</td>
+                        <td class="text-center">Endrunde lÃ¤uft...</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><a href=turnieranmeldungen?turnierid=168&disziplinid=5&ver=2>Damen
+                            Einzel</a>
+                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center">geplant</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><a href=disziplinendplatzierungen?turnierid=168&disziplinid=6&ver=2>Junioren
+                            Doppel</a></td>
+                        <td class="text-center">ProfiKO, AmateurKO</td>
+                        <td class="text-center">beendet</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><a href=turnieranmeldungen?turnierid=168&disziplinid=7&ver=2>Junioren
+                            Einzel</a></td>
+                        <td class="text-center"></td>
+                        <td class="text-center">geplant</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><a href=disziplinendplatzierungen?turnierid=168&disziplinid=8&ver=2>Senioren
+                            Doppel</a></td>
+                        <td class="text-center">ProfiKO, AmateurKO</td>
+                        <td class="text-center">beendet</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><a href=turnieranmeldungen?turnierid=168&disziplinid=9&ver=2>Senioren
+                            Einzel</a></td>
+                        <td class="text-center"></td>
+                        <td class="text-center">geplant</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><a href=disziplinendplatzierungen?turnierid=168&disziplinid=13&ver=2>Mixed
+                            Doppel</a></td>
+                        <td class="text-center">ProfiKO</td>
+                        <td class="text-center">Endrunde lÃ¤uft...</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/></div>
+
+
+        </div>
+        <div class="banner col-6 col-lg-3">
+            <img src="fileadmin/images/cropped-Startbildschirm_2.png" class="img-fluid float-right" alt="Werbebanner">
+        </div>
+
+        <div>
+
+        </div>
+
+    </div>
+
+</div><!-- /.container -->
+<footer class="footer">
+    <div class="container">
+
+
+        <span><a href="http://www.tifu.info/impressum" class="footerlink px-2">Impressum</a></span>
+
+
+    </div>
+</footer>
+<script src="/typo3conf/ext/bootstrap_grids/Resources/Public/Flexslider2/jquery.flexslider-min.js?1506300366"
+        type="text/javascript"></script>
+<script src="/typo3conf/ext/tifu_distribution/Resources/Public/Bootstrap/js/jquery.js?1506466473"
+        type="text/javascript"></script>
+<script src="/typo3conf/ext/tifu_distribution/Resources/Public/Bootstrap/js/popper.min.js?1506466472"
+        type="text/javascript"></script>
+<script src="/typo3conf/ext/tifu_distribution/Resources/Public/Bootstrap/js/bootstrap.js?1506466472"
+        type="text/javascript"></script>
+<script src="/typo3conf/ext/femanager/Resources/Public/JavaScript/Validation.min.js?1506636049"
+        type="text/javascript"></script>
+<script src="/typo3conf/ext/femanager/Resources/Public/JavaScript/Femanager.min.js?1506636049"
+        type="text/javascript"></script>
+
+
 </body>
+</html>
