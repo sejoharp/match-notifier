@@ -1,15 +1,13 @@
 (ns match-notifier.core
-  (:gen-class))
+  (:require [hickory.select :as h]
+           [falcon.core :as falcon]
+           [clojure.java.io :as io]))
 
-(use 'hickory.core)
-(use 'hickory.zip)
-(require '[hickory.select :as h])
+(def path "resources/overview.html")
 
-(def path "test/resources/overview.html")
-
-(defn hickory-snippets
+(defn parsed-html
   [file]
-  (as-hickory (parse (slurp file))))
+  (falcon/parse (io/resource file)))
 
 (defn one-element?
   [elements]
@@ -17,9 +15,7 @@
 
 (defn running-tournament-element
   [events]
-  (h/select
-    (h/find-in-text #"laufende Turniere")
-    events))
+    (falcon/select events "table.table:nth-child(2) > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1):contains(laufende Turniere)"))
 
 (defn running-matches-element
   [events]
@@ -50,21 +46,21 @@
    :link (link snippet)})
 
 (defn running-tournaments?
-  [snippets]
-  (->> snippets
+  [html]
+  (->> html
        running-tournament-element
        one-element?))
 
 (defn tournaments
-  [snippets]
-  (->> snippets
+  [html]
+  (->> html
        running-tournament-snippets
        (map to-tournament)))
 
 (defn running-tournaments
-  [snippets]
-  (if (running-tournaments? snippets)
-    (tournaments snippets)
+  [html]
+  (if (running-tournaments? html)
+    (tournaments html)
     []))
 
 (defn running-matches?
@@ -111,4 +107,4 @@
 (defn -main
   [& args]
   (println (map to-tournament
-                (running-tournaments (hickory-snippets path)))))
+                (running-tournaments (parsed-html path)))))

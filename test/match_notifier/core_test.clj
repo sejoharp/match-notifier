@@ -2,11 +2,11 @@
   (:require [clojure.test :refer :all]
             [match-notifier.core :refer :all]))
 
-(def overview-snippets (hickory-snippets "test/resources/overview.html"))
-(def overview-snippets-without-running-tournaments (hickory-snippets "test/resources/overview-without-running-tournaments.html"))
+(def overview-snippets (parsed-html "resources/overview.html"))
+(def overview-snippets-without-running-tournaments (parsed-html "resources/overview-without-running-tournaments.html"))
 
-(def tournament-snippets (hickory-snippets "test/resources/tournament.html"))
-(def tournament-snippets-without-running-match (hickory-snippets "test/resources/tournament-without-running-match.html"))
+(def tournament-snippets (parsed-html "resources/tournament.html"))
+(def tournament-snippets-without-running-match (parsed-html "resources/tournament-without-running-match.html"))
 
 (deftest overview-parsing
   (testing "detects running tournaments"
