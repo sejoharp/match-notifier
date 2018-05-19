@@ -1,7 +1,7 @@
 (ns match-notifier.core
   (:require [hickory.select :as h]
-           [falcon.core :as falcon]
-           [clojure.java.io :as io]))
+            [falcon.core :as falcon]
+            [clojure.java.io :as io]))
 
 (def path "resources/overview.html")
 
@@ -14,31 +14,28 @@
   (= 1 (count elements)))
 
 (defn running-tournament-element
-  [events]
-    (falcon/select events "table.table:nth-child(2) > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1):contains(laufende Turniere)"))
+  [html]
+  (falcon/select html "table.table:nth-child(2) > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1):contains(laufende Turniere)"))
 
 (defn running-matches-element
-  [events]
-  (h/select
-    (h/find-in-text #"laufende Spiele")
-    events))
+  [html]
+  (falcon/select html "table.table:nth-child(2) > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1):contains(laufende Spiele)"))
 
 (defn running-tournament-snippets
   [html]
-  (h/select
-    (h/child
-      (h/id :c1)
-      (h/nth-child 2)
-      (h/tag :tbody)
-      (h/tag :tr)
-      (h/tag :td)
-      (h/tag :span)
-      (h/tag :a))
-    html))
+  (falcon/select html "table.table:nth-child(2) > tbody:nth-child(2) > tr"))
 
+(def link (comp #(str "http://www.tifu.info/" %)
+                :href
+                :attrs
+                first
+                :children
+                first
+                :children
+                second
+                :children))
 
-(def name (comp first :content))
-(def link (comp #(str "http://www.tifu.info/" %) :href :attrs))
+(def name (comp :text second :children))
 
 (defn to-tournament
   [snippet]
