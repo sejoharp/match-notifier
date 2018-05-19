@@ -13,17 +13,9 @@
   [elements]
   (= 1 (count elements)))
 
-(defn running-tournament-element
-  [html]
-  (falcon/select html "table.table:nth-child(2) > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1):contains(laufende Turniere)"))
-
-(defn running-matches-element
+(defn running-matches-headline
   [html]
   (falcon/select html "table.table:nth-child(2) > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1):contains(laufende Spiele)"))
-
-(defn running-tournament-snippets
-  [html]
-  (falcon/select html "table.table:nth-child(2) > tbody:nth-child(2) > tr"))
 
 (def link (comp #(str "http://www.tifu.info/" %)
                 :href
@@ -42,17 +34,25 @@
   {:name (name snippet)
    :link (link snippet)})
 
-(defn running-tournaments?
+(defn running-tournament-headline
   [html]
-  (->> html
-       running-tournament-element
-       one-element?))
+  (falcon/select html "table.table:nth-child(2) > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1):contains(laufende Turniere)"))
+
+(defn running-tournament-snippets
+  [html]
+  (falcon/select html "table.table:nth-child(2) > tbody:nth-child(2) > tr"))
 
 (defn tournaments
   [html]
   (->> html
        running-tournament-snippets
        (map to-tournament)))
+
+(defn running-tournaments?
+  [html]
+  (->> html
+       running-tournament-headline
+       one-element?))
 
 (defn running-tournaments
   [html]
@@ -63,7 +63,7 @@
 (defn running-matches?
   [snippets]
   (->> snippets
-       running-matches-element
+       running-matches-headline
        one-element?))
 
 (defn running-matches
